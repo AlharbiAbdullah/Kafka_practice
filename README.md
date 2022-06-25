@@ -52,3 +52,27 @@
 	* lets say there the producser has data about employees and products. 
 	* We create two consumer groups, one to read emplyees data, and the second to read products data. 
 	
+---------------------------------
+
+## Kafka Brokers 
+- Kafka cluster is composed of multiple brokers.
+	* We can think of brokers as servers. 
+	* Brokers job is to receive/send data. 
+	* Each broker has an ID -Integer- (101 , 102 , 103, ...etc) 
+	* Each broker consists of certain topics. 
+	* Topics partition will be distributed across all brokers. 
+	* Kafka broker discovery:
+		* we only need to connect to one broker(Bootstrap broker)
+		* the bootstrap cluster will inform kafka client for all the other brokers.
+
+----------------------------------
+
+## Topics replication
+
+- We can replicate data within kafka 
+- We need to set "replication factor" to 1,2, or 3 (3 is a common option)
+- We replicate data in case of failure, so we don't loss data and we can retrive it fast.
+- lets say we have a topic with 2 partition and 2 replication factor 
+	* we will end up with 2 partiotion on 2 brokers 
+	* and another 2 replication of the partition on another 2 brokers. 
+	* if we lose one of the partition, we can use the replica
